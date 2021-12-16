@@ -6,8 +6,6 @@ import wikipedia
 import requests
 from bs4 import BeautifulSoup
 
-
-
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -57,12 +55,21 @@ def run_alexa():
         now = datetime.datetime.now()
         print('current date and time : ')
         p=now.strftime('%Y-%m-%d %I %M %p')
-
+        print(p)
         talk(p)
-
-    elif 'who ' in command:
-        person = command.replace('who is ', '')
+    elif 'who' in command:
+        person = command.replace('who is', '')
         info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
+    elif 'what' in command:
+        thing = command.replace('what is', '')
+        info = wikipedia.summary(thing, 1)
+        print(info)
+        talk(info)
+    elif 'where' in command:
+        thing = command.replace('what is', '')
+        info = wikipedia.summary(thing, 1)
         print(info)
         talk(info)
     elif 'temperature' in command:
@@ -73,12 +80,10 @@ def run_alexa():
         temp = data.find('div', class_='BNeawe').text
         print(temp)
         talk(f'current {search} is {temp}')
-
     else:
         talk('Please say the command again.')
 
 
-
 while True:
-    run_alexa()
+     run_alexa()
 
