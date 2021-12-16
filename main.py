@@ -30,7 +30,7 @@ def wishMe():
         print('Hello,good Evening. How can I help you')
 def take_command():
     try:
-        with sr .Microphone() as source:
+        with sr.Microphone() as source:
             print('listening...')
             voice = listener.listen(source)
             command = listener.recognize_google(voice)
@@ -57,6 +57,7 @@ def run_alexa():
         now = datetime.datetime.now()
         print('current date and time : ')
         p=now.strftime('%Y-%m-%d %I %M %p')
+
         talk(p)
 
     elif 'who ' in command:
